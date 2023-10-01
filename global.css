@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 * a {
    text-decoration: none;
    color: #3c3c3c;
@@ -682,6 +683,10 @@ body::-webkit-scrollbar-thumb {
 
 /* ========-----------------Tab head menu black Ends -------======= */
 
+.category .cat-page .cat-page-items .cat-items-list li a figure .img-thumb {
+   width:210px
+}
+
 /* ========-----------------Tab head manu Starts -------======= */
 
 .tabhead-menu::after {
@@ -812,8 +817,6 @@ body::-webkit-scrollbar-thumb {
    text-decoration-color: #3c3c3c;
    text-underline-offset: 0.2em;
 }
-
-
 
 .hero-grid .content-list li a h3 {
    display: inline-block;
@@ -1456,7 +1459,6 @@ section {
    line-height: 22px;
    letter-spacing: 0.3px;
    display: -webkit-box;
-   -webkit-line-clamp: 2;
    background: linear-gradient(357deg, #14141450, #66666680);
    -webkit-box-orient: vertical;
    overflow: hidden;
@@ -2200,11 +2202,27 @@ section {
 
 
 @media (max-width:768px) {
+   .profile {
+      display: flex;
+      background-color: #f8f8f8;
+      gap: 32px;
+  }
+   #search-popup .quick-search>.form-control {
+      font-size: 35px !important;
+   }
+   .category .cat-page .cat-page-items .cat-items-list li a figure .img-thumb {
+      width:158px
+   }
    .category .cat-page .cat-page-items .cat-items-list li {
       width: 100% !important;
       display: flex;
       flex-direction: column;
    }
+   .userProfile .author-social {
+      top: -32px !important;
+      right: 50% !important;
+      transform: translate(19%, 0px);
+  }
 
    .profile{
       flex-direction: column;
@@ -2368,6 +2386,7 @@ section {
       height: 100px !important;
       border-radius: 5px;
       min-width: 153px;
+      max-width:153px;
    }
 
    .side-feed-list .side-feed .news figure .thumb {
@@ -2555,17 +2574,29 @@ section {
    flex-direction: column;
 }
 
-.category .cat-page .cat-page-items .cat-items-list li a figure img {
-   width: -moz-available;
-   width: -webkit-fill-available;
+
+.category .cat-page .cat-page-items .cat-items-list li a figure .img {
+   width: 170px;
    height: 110px;
    object-fit: cover;
 }
 
+
+.category .cat-page .cat-page-items .cat-items-list li a figure .videoicon {
+   width: 35.564px !important;
+   height: 35.564px;
+   min-width: 35.564px;
+   object-fit: cover;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
 .category .cat-page .cat-page-items .cat-items-list li a figure {
    width: 40%;
    display: flex;
    flex-direction: column;
+   position: relative;
 }
 
 .category .cat-page .cat-page-items .cat-items-list li a {
@@ -2821,6 +2852,10 @@ section {
    transition: all .2s linear;
 }
 
+.one-news-sidebar .stories .webstories {
+   flex-wrap: wrap;
+}
+
 
 
 /* -------------------------------------------------------------------------------------
@@ -2918,9 +2953,43 @@ section {
    }
 }
 
+/* -------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+----------------------  Search Popup -----------------------------------------------------*/
+#search-popup .search-box {
+   overflow-y: scroll;
+   max-height: calc(100vh - 38vh);
+}
 
+#search-popup {
+   position: fixed;
+   display: none;
+   flex-direction: column;
+   width: 100%;
+   top: 0;
+   z-index: 9999999;
+   height: 100%;
+   background-color: #fff;
+}
 
+#search-popup .quick-search {
+   margin: 16px auto;
+   width: 100%;
+}
 
+#search-popup .quick-search>.form-control {
+   background: transparent;
+   border: 0;
+   border-radius: 0;
+   box-shadow: none;
+   color: #b10000 !important;
+   display: block;
+   font-size: 50px;
+   font-weight: 400;
+   height: 100px;
+   padding: 10px 0;
+}
 
 /* -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
@@ -2933,17 +3002,19 @@ section {
 
 /*-------------- New css  -------------------------------------------*/
 
-.story-heading{
-   padding: 0;
-   margin: 10px 0; 
-}
-
 .profile{
    display: flex;
    background-color: #f8f8f8;
 }
 
 
+.profile .post__thumbnail.post__author {
+flex: 2;
+padding: 20px;
+display:flex;
+flex-direction:row;
+justify-content:center;
+}
 .profile .post__thumbnail{
 flex: 2;
 padding: 20px;
@@ -2955,30 +3026,34 @@ padding: 20px;
    height: 200px;
    object-fit: cover;
 }
-
-.userProfile{
-   align-items: center;
+.profile .post__thumbnail.post__author img{ 
+   width: 200px;
+   border-radius: 20px;
+   height: 200px;
+   object-fit: cover;
 }
 
-
-.userProfile .post__thumbnail{
-flex: 1;
-text-align: center;
-}
-
-.userProfile .post__thumbnail img{ 
-    width: 200px;
-    border-radius: 100px;
-    height: 200px;
-}
-
-.livestory{
-   flex-wrap: wrap;
-}
-
-.profile .pro-contant{
+.profile .pro-contant {
    flex: 3;
    padding: 0 20px;
+   display: flex;
+   position: relative;
+   flex-direction: column;
+   justify-content: center;
+}
+.userProfile .author-social li svg{
+   fill: #ff0000;
+   width: 16px;
+   margin-bottom: 8px;
+}
+.userProfile .author-social {
+   position: absolute;
+    top: 16px;
+    right: 4%;
+    display:flex;
+    flex-direction:row;
+    gap:16px;
+    list-style:none;
 }
 
 .error-page{
